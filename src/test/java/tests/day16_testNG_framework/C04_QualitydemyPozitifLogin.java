@@ -8,7 +8,7 @@ import utilities.Driver;
 public class C04_QualitydemyPozitifLogin {
 
 
-   @Test
+   @Test(groups = {"smoke","regression"})
     public void pozitifLoginTesti(){
        //1- https://www.qualitydemy.com/ anasayfasina gidin
         Driver.getDriver().get("https://www.qualitydemy.com/");
