@@ -8,6 +8,7 @@ import org.testng.asserts.SoftAssert;
 import pages.ZeroAppPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 import javax.xml.crypto.KeySelector;
 import java.security.Key;
@@ -64,15 +65,19 @@ public class C01_SoftAssertion {
        String [] dropDownElementleriArr= {"Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)","Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)","Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)"};
        List<String> expectedDropDownElementleriList= Arrays.asList(dropDownElementleriArr);
 
-       List<WebElement> dropDownElementleriList=select.getOptions(); //bizim expected listemiz string karşılaştıramyız. bu nedenle web element listesini stringe döndrmeliyiz.
+       List<WebElement> dropdownElementleriList=select.getOptions(); //bizim expected listemiz string karşılaştıramyız. bu nedenle web element listesini stringe döndrmeliyiz.
 
-        List<String> actualDropDownOpsiyonlariList= new ArrayList<>();
+        /*List<String> actualDropDownOpsiyonlariList= new ArrayList<>();
         //list web elementlerin her birinin textii alıp stirng lliste ekleyelim. for kullanalım
 
         for (WebElement each: dropDownElementleriList
              ) {
             actualDropDownOpsiyonlariList.add(each.getText());
         }
+
+         */
+        List<String> actualDropDownOpsiyonlariList = ReusableMethods.stringListeCevir(dropdownElementleriList);
+
 
         softAssert.assertEquals(actualDropDownOpsiyonlariList, expectedDropDownElementleriList, "dropdown opsiyonları istenen şekilde değil");
 
